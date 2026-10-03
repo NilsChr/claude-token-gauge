@@ -20,11 +20,9 @@ Context, Weekly and Cache are colored from green (0%) through yellow (50%) to re
 In Claude Code:
 
 ```
-/plugin marketplace add <owner>/claude-mods
+/plugin marketplace add NilsChr/claude-mods
 /plugin install token-gauge@claude-mods
 ```
-
-Replace `<owner>` with the GitHub user or organization that owns this repo.
 
 To collapse the band, press `ctrl+x ctrl+a` or click `[-]`.
 
@@ -82,7 +80,7 @@ Changes take effect the next time Claude Code starts.
 
    ```bash
    mkdir -p ~/.claude/token-gauge
-   curl -fsSL https://raw.githubusercontent.com/<owner>/claude-mods/master/statusline/token-gauge.mjs \
+   curl -fsSL https://raw.githubusercontent.com/NilsChr/claude-mods/master/statusline/token-gauge.mjs \
      -o ~/.claude/token-gauge/token-gauge.mjs
    ```
 
