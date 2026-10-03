@@ -1,0 +1,9 @@
+{
+  "name": "token-gauge",
+  "version": "0.1.0",
+  "description": "Band above the prompt: context fill, weekly quota, last turn's tokens and prompt cache hit rate, colored green to red.",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Nils Christian Bogen"
+  }
+}
