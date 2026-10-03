@@ -20,13 +20,52 @@ Context, Weekly and Cache are colored from green (0%) through yellow (50%) to re
 In Claude Code:
 
 ```
-/plugin marketplace add <owner>/token-gauge
-/plugin install token-gauge@token-gauge
+/plugin marketplace add <owner>/claude-mods
+/plugin install token-gauge@claude-mods
 ```
 
 Replace `<owner>` with the GitHub user or organization that owns this repo.
 
 To collapse the band, press `ctrl+x ctrl+a` or click `[-]`.
+
+### Global or per project
+
+By default the plugin is installed for your user, so it shows in every project. To install it for one project only, run the install from that project's folder with a scope:
+
+```bash
+claude plugin install token-gauge@claude-mods --scope project   # shared: saved in .claude/settings.json, committed with the repo
+claude plugin install token-gauge@claude-mods --scope local     # only you: saved in .claude/settings.local.json
+```
+
+| Scope | Where it applies | Saved in |
+| --- | --- | --- |
+| `user` (default) | All your projects | `~/.claude/settings.json` |
+| `project` | This project, for everyone who uses the repo | `.claude/settings.json` |
+| `local` | This project, only for you | `.claude/settings.local.json` |
+
+## Uninstall
+
+Remove the plugin:
+
+```
+/plugin uninstall token-gauge@claude-mods
+```
+
+If you installed it with `--scope project` or `--scope local`, uninstall from the same scope and project folder:
+
+```bash
+claude plugin uninstall token-gauge@claude-mods --scope project
+```
+
+To turn it off without uninstalling, use `/plugin disable token-gauge@claude-mods`. Turn it back on with `/plugin enable token-gauge@claude-mods`.
+
+To also remove the marketplace:
+
+```
+/plugin marketplace remove claude-mods
+```
+
+Changes take effect the next time Claude Code starts.
 
 ## Requirements
 
@@ -43,7 +82,7 @@ To collapse the band, press `ctrl+x ctrl+a` or click `[-]`.
 
    ```bash
    mkdir -p ~/.claude/token-gauge
-   curl -fsSL https://raw.githubusercontent.com/<owner>/token-gauge/master/statusline/token-gauge.mjs \
+   curl -fsSL https://raw.githubusercontent.com/<owner>/claude-mods/master/statusline/token-gauge.mjs \
      -o ~/.claude/token-gauge/token-gauge.mjs
    ```
 
@@ -52,6 +91,14 @@ To collapse the band, press `ctrl+x ctrl+a` or click `[-]`.
    ```json
    "statusLine": { "type": "command", "command": "node ~/.claude/token-gauge/token-gauge.mjs" }
    ```
+
+   This is global: `~/.claude/settings.json` applies to all your projects. To use it in one project only, put the `statusLine` entry in that project's `.claude/settings.json` or `.claude/settings.local.json` instead.
+
+To remove the status line version, delete the `statusLine` entry from the settings file you added it to, then delete the script:
+
+```bash
+rm -r ~/.claude/token-gauge
+```
 
 The status line version differs from the mod:
 

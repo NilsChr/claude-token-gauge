@@ -1,11 +1,14 @@
 {
-  "name": "token-gauge",
-  "owner": { "name": "Nils Christian Bogen" },
+  "name": "claude-mods",
+  "owner": {
+    "name": "Nils Christian Bogen"
+  },
   "plugins": [
     {
       "name": "token-gauge",
       "source": "./plugins/token-gauge",
       "description": "Context fill, weekly quota, last turn's tokens and prompt cache hit rate in a band above the prompt."
     }
-  ]
+  ],
+  "description": "Mods for Claude Code."
 }
